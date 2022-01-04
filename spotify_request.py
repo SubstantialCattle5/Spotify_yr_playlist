@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-load_dotenv("E:\PROJECTS\python\spotify_year_playlist\.env.txt")  #Enter your own local env
+load_dotenv("E:\PROJECTS\python\spotify_year_playlist\.env.txt")  # Enter your own local env
 CLIENT_ID = os.getenv('client_id')
 CLIENT_SECRET = os.getenv('client_secret')
 REDIRECT_URI = 'https://example.com/'
@@ -31,3 +31,12 @@ class Spotify_Request:
             return uri
         except IndexError:
             print(f'{song} not Found')
+
+    def playlist(self, songlist, year):
+
+            # Creating the playlist
+            playlist = self.sp.user_playlist_create(user=self.user_id, name=f'Top Songs of year: {year}', public=True,
+                                                    collaborative=False, description='')
+            # Adding songs to the playlist
+            self.sp.playlist_add_items(playlist_id=playlist['id'], items=songlist, position=None)
+            print("Successful")

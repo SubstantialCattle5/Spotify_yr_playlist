@@ -12,4 +12,6 @@ year = date.date.split('-')[0]
 sp = Spotify_Request()
 # To get all the tracks and remove 'none' tracks
 track_uri = [sp.search(song=i, year=year) for i in songlist if not sp.search(song=i, year=year) is None]
-print(track_uri)
+
+# Spotify Playlist
+sp.playlist(songlist = track_uri , year = year)
