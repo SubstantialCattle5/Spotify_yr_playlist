@@ -9,10 +9,7 @@ class Song_Scrapper:
 
     def scrape(self):
         web_data = self.link.text
-
         soup = BeautifulSoup(web_data, "html.parser")
-
         songs = soup.select(selector="li h3")
-
         song_titles = [song.getText().strip("\n") for song in songs[:10]]
         return song_titles

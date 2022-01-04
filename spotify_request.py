@@ -34,9 +34,9 @@ class Spotify_Request:
 
     def playlist(self, songlist, year):
 
-            # Creating the playlist
-            playlist = self.sp.user_playlist_create(user=self.user_id, name=f'Top Songs of year: {year}', public=True,
-                                                    collaborative=False, description='')
-            # Adding songs to the playlist
-            self.sp.playlist_add_items(playlist_id=playlist['id'], items=songlist, position=None)
-            print("Successful")
+        # Creating the playlist
+        playlist = self.sp.user_playlist_create(user=self.user_id, name=f'Top Songs of year: {year}', public=True,
+                                                collaborative=False, description='')
+        # Adding songs to the playlist
+        self.sp.playlist_add_items(playlist_id=playlist['id'], items=songlist, position=None)
+        print("Successful")
